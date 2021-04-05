@@ -67,7 +67,6 @@ target_link_libraries(${PROJECT_NAME} asio::asio_static)
 
 if(BUILD_TESTS)
   add_executable(tests
-          # TODO: enum your files and delete this comment
           ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
           )
   target_link_libraries(tests ${PROJECT_NAME} GTest::gtest_main)
