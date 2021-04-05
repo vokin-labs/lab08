@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 {
   try {
     // Check command line arguments.
-    if(argc != 5 && argc != 6) {
+    if (argc != 5 && argc != 6) {
       std::cerr <<
                 "Usage: http-client-sync <host> <port> <target> <body>"
           "[<HTTP version: 1.0 or 1.1(default)>]\n" <<
@@ -77,7 +77,7 @@ int main(int argc, char** argv)
     // not_connected happens sometimes
     // so don't bother reporting it.
     //
-    if(ec && ec != beast::errc::not_connected)
+    if (ec && ec != beast::errc::not_connected)
       throw beast::system_error{ec};
 
     // If we get here then the connection is closed gracefully
