@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 {
   try {
     // Check command line arguments.
-    if (argc != 4 && argc != 5) {
+    if (argc != 5 && argc != 6) {
       std::cerr <<
                 "Usage: http-client-sync <host> <port> <target> <body>"
           "[<HTTP version: 1.0 or 1.1(default)>]\n" <<
@@ -31,8 +31,8 @@ int main(int argc, char** argv)
     auto const host = argv[1];
     auto const port = argv[2];
     auto const target = argv[3];
-//    auto const body = argv[4];
-    int version = argc == 5 && !std::strcmp("1.0", argv[4]) ? 10 : 11;
+    auto const body = argv[4];
+    int version = argc == 6 && !std::strcmp("1.0", argv[5]) ? 10 : 11;
 
     // The io_context is required for all I/O
     net::io_context ioc;
@@ -52,11 +52,7 @@ int main(int argc, char** argv)
     req.set(http::field::host, host);
     req.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
     req.set(http::field::content_type, "application/json");
-    req.body() = R"({
-                      "input": "hel"
-                    }
-    )";
-//    req.body() = "{\n\t\"input\": \"" + std::string(body) + "\"\n}";
+    req.body() = "{\n\t\"input\": \"" + std::string(body) + "\"\n}";
 
     req.prepare_payload();
     // Send the HTTP request to the remote host
