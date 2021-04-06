@@ -5,6 +5,7 @@
 #include <boost/beast/version.hpp>
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
+#include <asio/impl/src.hpp>
 #include <cstdlib>
 #include <iostream>
 #include <string>
